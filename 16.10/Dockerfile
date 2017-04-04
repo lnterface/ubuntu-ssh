@@ -4,7 +4,9 @@ MAINTAINER lnterface "https://github.com/lnterface/ubuntu-ssh"
 RUN apt-get update && \
     apt-get install -y openssh-server pwgen && \
     apt-get clean all
-    
+
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+
 RUN mkdir /var/run/sshd
 
 RUN sed -ri 's/^PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config
