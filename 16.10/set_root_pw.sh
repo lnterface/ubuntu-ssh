@@ -7,10 +7,10 @@ fi
 
 PASS=${ROOT_PASS:-$(pwgen -s 12 1)}
 _word=$( [ ${ROOT_PASS} ] && echo "preset" || echo "random" )
+echo $(TZ="Asia/Shanghai" date)
 echo "=> Setting a ${_word} password to the root user"
 echo "root:$PASS" | chpasswd
 
-echo $(TZ="Asia/Shanghai" date)
 echo "=> Done!"
 touch /.root_pw_set
 
